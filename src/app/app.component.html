@@ -1,21 +1,48 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-<quartz></quartz>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+<div *ngIf="!tweet.isLiked; then isFav else isLik">
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<ng-template #isFav>
+test 1
+</ng-template>
+<br />
+<ng-template #isLik>
+test 2
+</ng-template>
+
+<div class="ui secondary  menu">
+            <a class="item"
+            [class.active]="viewMode=='job'" (click)="viewMode='job'">
+                  Left-Right Functionality
+            </a>
+            <a class="item"
+            [class.active]="viewMode=='tweet'" (click)="viewMode='tweet'">
+                  Tweet Functionality
+            </a>   
+            <a class="item"
+            [class.active]="viewMode=='testTable'" (click)="viewMode='testTable'">
+                  Table
+            </a>          
+</div>
+<div [ngSwitch]="viewMode">
+      <div *ngSwitchCase="'job'">
+            <app-quartz-job-cli [is-fav]="post.isFavourite" (change)="onFavoriteChanged($event)"></app-quartz-job-cli>
+      </div>
+      <div *ngSwitchCase="'tweet'">
+            <like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked"></like>
+      </div>
+      <div *ngSwitchCase="'testTable'">
+            <input type="text" appInputformater [format]="'uppercase'"> <br />
+            <testTable></testTable>
+
+      </div>
+      <div *ngSwitchDefault>
+            Not implemented yet!
+      </div>
+</div>
+<br />
+<br />
+<br />
+<zippy title="Content header">Content header content</zippy>
+
+
 

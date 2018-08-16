@@ -1,0 +1,10 @@
+<span>
+    <i class="heart icon"      
+   [ngClass]="{
+        'outline': !isActive,
+        'highlighted': isActive
+    }"
+    (click)="onClick()"
+    ></i></span>
+<span>{{likesCount}}</span>
+
