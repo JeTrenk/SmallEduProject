@@ -1,0 +1,26 @@
+<!-- <table class="ui celled striped table">
+    <thead>
+        <tr><th class="single line">Id</th>
+        <th>Name</th>     
+      </tr></thead>
+  <tbody>
+      <tr *ngFor="let i of books">
+          <td class="single line">
+              {{i.id}}
+            </td>
+        <td class="right aligned collapsing"> {{i.name}}</td>
+      </tr>     
+    </tbody>
+  </table> -->
+  <table class="ui right aligned table">
+      <thead>
+        <th class="left aligned" >Id</th>
+        <th class="left aligned">Name</th>     
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td class="left aligned">{{book.id}}</td>
+          <td class="left aligned">{{book.name}}</td>        
+        </tr>     
+      </tbody>
+    </table>
